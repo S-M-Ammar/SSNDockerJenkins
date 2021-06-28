@@ -1,0 +1,1399 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Smart Sense Node",
+    "description": "SSN Application API",
+    "license": {
+      "name": "CARE",
+      "url": "https://carepvtltd.com/"
+    }
+  },
+  "host": "192.168.0.160:3001",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/Workshops": {
+      "get": {
+        "tags": [
+          "Workshops"
+        ],
+        "summary": "Request to get all workshops",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [{
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "ERP-WorkShop-A",
+                "__v": 0
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/Workshop/{id}": {
+      "get": {
+        "tags": [
+          "Workshops"
+        ],
+        "summary": "Request to get one workshop by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [{
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "ERP-WorkShop-A",
+                "__v": 0
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of workshop",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/Workshop": {
+      "post": {
+        "tags": [
+          "Workshops"
+        ],
+        "summary": "Request to create one workshop",
+        "responses": {
+          "201": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "ERP-WorkShop-A",
+                "__v": 0
+              }
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "body",
+            "description": "Name of workshop",
+            "schema": {
+              "type": "object",
+              "example": {
+                "name": "MES-Workshop-04"
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Workshops"
+        ],
+        "summary": "Request to update one workshop. Id must be provided. All other parameters depend on use case",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "ERP-WorkShop-A",
+                "__v": 0
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of workshop",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb383861ae482185c76891b",
+                "name": "MES-Workshop-02"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Workshops"
+        ],
+        "summary": "Request to delete one workshop by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "ERP-WorkShop-A",
+                "__v": 0
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of workshop",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb383861ae482185c76891b"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/Zones": {
+      "get": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to get all Zones",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [{
+                "_id": "5fc0d42eeebc8e1ac43efb3d",
+                "name": "Zone-12",
+                "workshop_id": "Fe3453300t312",
+                "min_temperature": 23,
+                "max_temperature" : 35,
+                "min_humidity" : 22,
+                "max_humidity" : 27,
+                "__v": 0
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/Zone/{id}": {
+      "get": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to get one zone by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [{
+                "_id": "5fc0d42eeebc8e1ac43efb3d",
+                "name": "Zone-12",
+                "workshop_id": "Fe3453300t312",
+                "min_temperature": 23,
+                "max_temperature" : 35,
+                "min_humidity" : 22,
+                "max_humidity" : 27,
+                "__v": 0
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of zone",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/Zone": {
+      "post": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to create one zone",
+        "responses": {
+          "201": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "_id": "5fc0d42eeebc8e1ac43efb3d",
+                "name": "Zone-12",
+                "workshop_id": "Fe3453300t312",
+                "min_temperature": 23,
+                "max_temperature" : 35,
+                "min_humidity" : 22,
+                "max_humidity" : 27,
+                "__v": 0
+              }
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Name of Zone, Id of Workshop , Min & Max temperature and humidity ratings",
+            "in": "body",
+            "description": "Name of zone & workshop id is required. Min & Max temperature and humidity values are also required to create a single zone",
+            "schema": {
+              "type": "object",
+              "example": {
+                "name": "Zone-12",
+                "workshop_id": "Fe3453300t312",
+                "min_temperature": 23,
+                "max_temperature" : 35,
+                "min_humidity" : 22,
+                "max_humidity" : 27,
+                "__v": 0
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to update one zone. Id must be provided. All other parameters depend on use case",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "_id": "5fc0d42eeebc8e1ac43efb3d",
+                "name": "Zone-12",
+                "workshop_id": "Fe3453300t312",
+                "min_temperature": 23,
+                "max_temperature" : 35,
+                "min_humidity" : 22,
+                "max_humidity" : 27,
+                "__v": 0
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of zone",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f",
+                "name": "Zone-201"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to delete one zone by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "_id": "5fc0d42eeebc8e1ac43efb3d",
+                "name": "Zone-12",
+                "workshop_id": "Fe3453300t312",
+                "min_temperature": 23,
+                "max_temperature" : 35,
+                "min_humidity" : 22,
+                "max_humidity" : 27,
+                "__v": 0
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of zone",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/Zone/Node_Machine_Data/{id}": {
+      "get": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to get nodes and machines exists inside one zone by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "7C:FC:4E:A2:E2:DF":[{
+                    "machine_id": "5fb62f3b6eb5972f1c394d3f",
+                    "machine_name": "XRAY Machine",
+                    "sensor_number": 2,
+                    "Node_id": "5fb62f3b6eb5972D1c396d4z"
+                  },
+                  {
+                    "machine_id": "5fb62f3b6eb5972f1c394d3c",
+                    "machine_name": "SPIN Machine",
+                    "sensor_number": 1,
+                    "Node_id": "5fb62f3b6eb5972D1c396d4z"
+                  }],
+                "7C:FC:4E:A2:E2:E2":[],
+                "7C:FC:4E:A2:E2:F1":[]
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of zone",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/Zone/Summary/{id}": {
+      "get": {
+        "tags": [
+          "Zones"
+        ],
+        "summary": "Request to get summary of one zone by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": {
+                "zone_summary":{
+                  "humidity":54,
+                  "temperature":23,
+                  "min_humidity":11,
+                  "max_humidity": 89,
+                  "min_temperature":22,
+                  "max_temperature":67
+                },
+                "machines_data": [
+                  {
+                    "machine_id": "5fb62f3b6eb5972f1c394d3f",
+                    "machine_name": "XRAY Machine",
+                    "sensor_number": 2,
+                    "state_instant": "IDLE",
+                    "state_instant_duration": 1123,
+                    "node_mac": "7A:B2:C3:4F:3D:DF",
+                    "node_id": "5fb62f3b6eb5972D1c396d4z",
+                    "uptime": 2000,
+                    "downtime": 10,
+                    "utilization_percent": 2.5,
+                    "units": 23
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of zone",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/UnregisteredNodes": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Request to get all Unregistered Nodes",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example":
+                {
+                  "FE:AB:12:45:09:A2": 6,
+                  "F8:A1:12:61:09:A2": 3
+                }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type":"object",
+              "example": {}
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/Nodes": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Request to get all Nodes",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [
+                {
+                  "_id": "5fc0d36b4016a62cbcbcb861",
+                  "mac": "7B:4E:DF:53:22:2A",
+                  "sensor_1_rating": 42,
+                  "sensor_2_rating": 39,
+                  "__v": 0,
+                  "ip": "192.168.10.13"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/Node/{id}": {
+      "get": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Request to get one node by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [
+                {
+                  "_id": "5fc0d36b4016a62cbcbcb861",
+                  "mac": "7B:4E:DF:53:22:2A",
+                  "sensor_1_rating": 42,
+                  "sensor_2_rating": 39,
+                  "__v": 0,
+                  "ip": "192.168.10.13"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type":"object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of node",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/Node": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Request to create one node",
+        "responses": {
+          "202": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "mac": "7B:4E:DF:53:22:2A",
+                "sensor_1_rating": 42,
+                "sensor_2_rating": 39,
+                "_v" : 1
+              }
+            }
+          },
+          "400": {
+            "description": "MAC already exists",
+            "schema": {
+              "type": "string",
+              "example": "Node with given mac already exists"
+            }
+
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "MAC of Node & Sensors Rating",
+            "in": "body",
+            "description": "mac address of node and sensors ratings ob both sensors",
+            "schema": {
+              "type": "object",
+              "example": {
+                "mac": "7B:4E:DF:53:22:2A",
+                "sensor_1_rating": 42,
+                "sensor_2_rating": 39
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Request to update one node. Id must be provided. All other parameters depend on use case",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "mac": "7B:4E:DF:53:22:2A",
+                "sensor_1_rating": 42,
+                "sensor_2_rating": 39,
+                "__v": 0,
+                "ip": "192.168.10.13"
+              }
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of node",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f",
+                "sensor_1_rating": "56"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Request to delete one node by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type":"object",
+              "example": [
+                {
+                  "_id": "5fc0d36b4016a62cbcbcb861",
+                  "mac": "7B:4E:DF:53:22:2A",
+                  "sensor_1_rating": 42,
+                  "sensor_2_rating": 39,
+                  "__v": 0,
+                  "ip": "192.168.10.13"
+                }
+              ]
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of node",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/Machines": {
+      "get": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Request to get all Machines",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": [{
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "Spin Machine",
+                "idle_threshold": 42,
+                "max_load": 39,
+                "sensor_voltage_scalar" : 0,
+                "_v" : 1
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/Machine/{id}": {
+      "get": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Request to get one machine by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": [{
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "Spin Machine",
+                "idle_threshold": 42,
+                "max_load": 39,
+                "sensor_voltage_scalar" : 0,
+                "_v" : 1
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of machine",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/Machine/State/Utilization": {
+      "get": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Request to get utilization details of one machine by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "ON-Time": "10:00:23",
+                "OFF-Time": "03:11:00",
+                "IDLE-Time": "00:10:12"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": "No machine found"
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Id , timestamp and duration",
+            "in": "body",
+            "description": "Id of machine , timestamp and duration in hours",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "FE44550P2233W",
+                "timestamp": "2020-09-14T11:23:08",
+                "duration": 9
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/Machine": {
+      "post": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Request to create one machine",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "Spin Machine",
+                "idle_threshold": 42,
+                "max_load": 39,
+                "sensor_voltage_scalar" : 0,
+                "_v" : 1
+              }
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Name of Machine & Configurations",
+            "in": "body",
+            "description": "name of machine and configurations of machine",
+            "schema": {
+              "type": "object",
+              "example": {
+                "name": "Spin Machine",
+                "idle_threshold": "42",
+                "max_load": "39",
+                "sensor_voltage_scalar": "0"
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Request to update one machine. Id must be provided. All other parameters depend on use case",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "Spin Machine",
+                "idle_threshold": 42,
+                "max_load": 39,
+                "sensor_voltage_scalar" : 0,
+                "_v" : 1
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of machine",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f",
+                "max_load": "56"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Request to delete one machine by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "name": "Spin Machine",
+                "idle_threshold": 42,
+                "max_load": 39,
+                "sensor_voltage_scalar" : 0,
+                "_v" : 1
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of machine",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/MachineMappings": {
+      "get": {
+        "tags": [
+          "Machine-Mappings"
+        ],
+        "summary": "Request to get all Machine Mappings",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": [{
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "machine_id": "5fc0d36b4016a62cbcbcb761",
+                "node_id": "5fc0d36b4016a62cbcbcb862",
+                "_v" : 1
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/MachineMapping/{id}": {
+      "get": {
+        "tags": [
+          "Machine-Mappings"
+        ],
+        "summary": "Request to get one machine mapping by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": [{
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "machine_id": "5fc0d36b4016a62cbcbcb761",
+                "node_id": "5fc0d36b4016a62cbcbcb862",
+                "_v" : 1
+              }]
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": []
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of machine mapping",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/MachineMapping": {
+      "post": {
+        "tags": [
+          "Machine-Mappings"
+        ],
+        "summary": "Request to create one machine mapping",
+        "responses": {
+          "202": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "_id": "5fc0d36b4016a62cbcbcb861",
+                "machine_id": "5fc0d36b4016a62cbcbcb761",
+                "node_id": "5fc0d36b4016a62cbcbcb862",
+                "_v" : 1
+              }
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID of Machine & ID of Node & Sensor Number ",
+            "in": "body",
+            "description": "Id of machine and node and sensor number",
+            "schema": {
+              "type": "object",
+              "example": {
+                "machine_id": "5fb62f3b6eb5972f1c394d3f",
+                "node_id": "5fb62f3b6eb5972f1c394d3f",
+                "sensor_number": 1
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Machine-Mappings"
+        ],
+        "summary": "Request to update one machine mapping. Id must be provided. All other parameters depend on use case",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "machine_id": "5fb62f3b6eb5972f1c394d3f",
+                "node_id": "5fb62f3b6eb5972f1c394d3f",
+                "sensor_number": 1,
+                "_v" : 1
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of machine mapping",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f",
+                "machine_id": "7fb62f3b6eb5972f1c394d2t"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Machine-Mappings"
+        ],
+        "summary": "Request to delete one machine mapping by id",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "type": "object",
+              "example": {
+                "machine_id": "5fb62f3b6eb5972f1c394d3f",
+                "node_id": "5fb62f3b6eb5972f1c394d3f",
+                "sensor_number": 1,
+                "_v" : 1
+              }
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "example": null
+            }
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of machine mapping",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/ZoneMappings": {
+      "get": {
+        "tags": [
+          "Zone-Mappings"
+        ],
+        "summary": "Request to get all Machine Mappings",
+        "responses": {
+          "200": {
+            "description": "A successful response"
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        }
+      }
+    },
+    "/ZoneMapping/{id}": {
+      "get": {
+        "tags": [
+          "Zone-Mappings"
+        ],
+        "summary": "Request to get one zone mapping by id",
+        "responses": {
+          "200": {
+            "description": "A successful response"
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of zone mapping",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/ZoneMapping": {
+      "post": {
+        "tags": [
+          "Zone-Mappings"
+        ],
+        "summary": "Request to create one zone mapping",
+        "responses": {
+          "200": {
+            "description": "A successful response"
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID of Zone & ID of Node",
+            "in": "body",
+            "description": "Id of zone and node",
+            "schema": {
+              "type": "object",
+              "example": {
+                "zone_id": "5fb62f3b6eb5972f1c394d3f",
+                "node_id": "5fb62f3b6eb5972f1c394d3f"
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Zone-Mappings"
+        ],
+        "summary": "Request to update one zone mapping. Id must be provided. All other parameters depend on use case",
+        "responses": {
+          "200": {
+            "description": "A successful response"
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of zone mapping",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f",
+                "node_id": "7fb62f3b6eb5972f1c394d2t"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Zone-Mappings"
+        ],
+        "summary": "Request to delete one zone mapping by id",
+        "responses": {
+          "200": {
+            "description": "A successful response"
+          },
+          "500": {
+            "description": "A failed response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "description": "id of zone mapping",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": "5fb62f3b6eb5972f1c394d3f"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/data/{id}": {
+
+    }
+  }
+}
